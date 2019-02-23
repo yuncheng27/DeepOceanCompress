@@ -44,12 +44,12 @@ class HuffmanTree
         }
 
     //创建 huffmantree
-    void CreateHuffmanTree(const vector<W> &v, const W &invalid)
+    void CreateHuffmanTree(const std::vector<W> &v, const W &invalid)
     {
         if(v.empty())
             return;
         //小堆  --创建二叉树森林
-        std::priority_queue<PNode, vector<PNode>, Compare<W>> hp;
+        std::priority_queue<PNode, std::vector<PNode>, Compare<W>> hp;
         for(size_t i = 0; i < v.size(); ++i)
         {
             if(v[i] != invalid)
@@ -59,6 +59,7 @@ class HuffmanTree
         
         while(hp.size() > 1)
         {
+            //从堆中获取权值最小的两颗二叉树
             PNode pLeft = hp.top();
             hp.pop();
 
@@ -68,7 +69,10 @@ class HuffmanTree
             //以pleft和pright权值之和作为新节点的权值
             PNode pParent = new Node(pLeft->_weight + pRight->_weight);
             pParent->_pLeft = pLeft;
+            pLeft->_pParent = pParent;
+
             pParent->_pRight = pRight;
+            pRight->_pParent = pParent;
 
             hp.push(pParent);
         }

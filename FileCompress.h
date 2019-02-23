@@ -1,6 +1,7 @@
 #pragma once
 #include<string>
 #include<vector>
+#include"Huffman.hpp"
 
 struct CharInfo
 {
@@ -29,10 +30,11 @@ class FileCompress
 {
     public:
         FileCompress();
-        void CompressFile(const string &strFilePath);
+        void CompressFile(const std::string &strFilePath);
         void UNCompressFile(const std::string &strFilePath);
     private:
         void GetHuffmanCode(HTNode<CharInfo> *_pRoot);
+        void WriteHeadInfo(FILE* pf, const std::string& strFileName);
     private:
         std::vector<CharInfo> _fileInfo;
 };

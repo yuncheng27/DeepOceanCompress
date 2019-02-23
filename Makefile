@@ -1,6 +1,6 @@
 #bin=FileCompress
 bin=Test
-cc=g++
+cc=g++ -std=c++11
 
 #$(bin):FileCompress.cpp
 $(bin):Test.cpp
