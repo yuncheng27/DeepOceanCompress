@@ -3,9 +3,14 @@
 #include<vector>
 #include"Huffman.hpp"
 
+typedef unsigned char UCH;
 struct CharInfo
 {
-    char _ch;
+    CharInfo(unsigned long long count = 0)
+      :_count(count)
+    {}
+
+    UCH _ch;
     unsigned long long _count;
     std::string _strCode;  //获取字符的编码
 
@@ -14,9 +19,9 @@ struct CharInfo
         return CharInfo(_count + info._count);
     }
 
-    bool operator>=(const CharInfo &info)
+    bool operator>(const CharInfo &info)
     {
-        return _count >= info._count;
+        return _count > info._count;
     }
     bool operator!=(const CharInfo &info)const
     {
@@ -35,6 +40,8 @@ class FileCompress
     private:
         void GetHuffmanCode(HTNode<CharInfo> *_pRoot);
         void WriteHeadInfo(FILE* pf, const std::string& strFileName);
+        void GetLine(FILE* pf, std::string& strContent);
     private:
         std::vector<CharInfo> _fileInfo;
 };
+

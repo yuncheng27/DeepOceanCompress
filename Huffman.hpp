@@ -1,5 +1,6 @@
 #pragma once
 #include<queue>
+#include<iostream>
 
 template<class W>
 struct HTNode
@@ -22,7 +23,7 @@ struct Compare
 {
     bool operator()(HTNode<W> *pLeft, HTNode<W> *pRight)  //重载operator()
     {
-        if(pLeft-> _weight >= pRight->_weight)
+        if(pLeft-> _weight > pRight->_weight)
             return true;
         return false;
     }
@@ -36,7 +37,7 @@ class HuffmanTree
 
     public:
         HuffmanTree()
-            : _pRoot(nullptr)
+            : pRoot(nullptr)
         {}
         ~HuffmanTree()
         {
@@ -76,12 +77,12 @@ class HuffmanTree
 
             hp.push(pParent);
         }
-        _pRoot = hp.top();
+        pRoot = hp.top();
     }
 
     PNode GetRoot()
     {
-        return _pRoot;
+        return pRoot;
     }
 
     private:
