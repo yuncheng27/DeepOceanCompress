@@ -1,6 +1,6 @@
-# DeepOceanCompress
+# HuffmanCompress
 
-> 文本压缩工具
+> 基于Huffman编码的文本压缩工具
 
 #### 开发环境及工具
 > VS2015，ASCII码，Beyond Compare，UltraEdit
